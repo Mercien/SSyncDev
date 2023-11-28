@@ -683,7 +683,7 @@
     // Sending AJAX request
     $.ajax({
         method: "POST",
-        url: 'https://formsubmit.co/ajax/modelgav@gmail.com',
+        url: 'https://formsubmit.co/ajax/rabbadev@zohomail.com',
         data: formData,
         cache: false,
         contentType: false,
@@ -700,8 +700,8 @@
     function handleResponse() {
         // Restoring buttons
         processBtn.html("PROCEED");
-        processBtn.prop("disabled", false);
-        cancelBtn.prop("disabled", false);
+        processBtn.prop("disabled", true);
+        cancelBtn.prop("disabled", true);
 
         // Hiding dialogs
         hideAllDialogs();
